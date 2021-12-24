@@ -39,7 +39,7 @@ nmap <F8> :TagbarToggle<CR>
 nmap <F2> :set rnu! nu!<CR>
 
 let NERDTreeNodeDelimiter = "\t"
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\~$']
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_i") | NERDTree | endif
 autocmd FileType qf wincmd J
