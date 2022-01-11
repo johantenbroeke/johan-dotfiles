@@ -37,6 +37,7 @@ nmap <F5> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 nmap <F2> :set rnu! nu!<CR>
+nmap <F3> :set list!<CR>
 
 let NERDTreeNodeDelimiter = "\t"
 let NERDTreeIgnore = ['\.pyc$', '\~$']
