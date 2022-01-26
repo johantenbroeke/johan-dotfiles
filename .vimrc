@@ -10,9 +10,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
+Plugin 'neoclide/coc.nvim'
+
+let g:coc_global_extensions = ['coc-phpls', 'coc-pyright', 'coc-python', 'coc-highlight']
+nmap <silent> <F9> <Plug>(coc-definition)
 
 set tags=tags
 
@@ -33,11 +37,12 @@ set fileformat=unix
 
 " color koehler
 hi Directory guifg=#efefef ctermfg=grey
-nmap <F5> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+let mapleader=" "
+nmap <Leader>5 :NERDTreeToggle<CR>
+nmap <Leader>8 :TagbarToggle<CR>
 
-nmap <F2> :set rnu! nu!<CR>
-nmap <F3> :set list!<CR>
+nmap <Leader>2 :set rnu! nu!<CR>
+nmap <Leader>3 :set list!<CR>
 
 let NERDTreeNodeDelimiter = "\t"
 let NERDTreeIgnore = ['\.pyc$', '\~$']
@@ -49,9 +54,20 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : coc#refresh()
+inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : coc#refresh()
 set lcs+=space:·
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
