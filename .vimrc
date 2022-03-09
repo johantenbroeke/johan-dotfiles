@@ -15,7 +15,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'neoclide/coc.nvim'
 
-let g:coc_global_extensions = ['coc-phpls', 'coc-pyright', 'coc-python', 'coc-highlight']
+let g:coc_global_extensions = ['coc-phpls', 'coc-pyright', 'coc-python', 'coc-highlight', 'coc-tsserver']
 nmap <silent> <F9> <Plug>(coc-definition)
 
 set tags=tags
@@ -43,7 +43,10 @@ nmap <Leader>8 :TagbarToggle<CR>
 
 nmap <Leader>2 :set rnu! nu!<CR>
 nmap <Leader>3 :set list!<CR>
-
+nmap <Leader>0 :Ack!<CR>
+nmap <Leader>9 :cclose<CR>
+nmap <Leader>- :Ack! 
+ 
 let NERDTreeNodeDelimiter = "\t"
 let NERDTreeIgnore = ['\.pyc$', '\~$']
 autocmd StdinReadPre * let s:std_in=1
