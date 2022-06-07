@@ -14,6 +14,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'neoclide/coc.nvim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+Plugin 'preservim/nerdcommenter'
+Plugin 'zivyangll/git-blame.vim'
 
 let g:coc_global_extensions = ['coc-phpls', 'coc-pyright', 'coc-python', 'coc-highlight', 'coc-tsserver']
 nmap <silent> <F9> <Plug>(coc-definition)
@@ -35,7 +39,6 @@ set expandtab
 set autoindent
 set fileformat=unix
 
-" color koehler
 hi Directory guifg=#efefef ctermfg=grey
 let mapleader=" "
 nmap <Leader>5 :NERDTreeToggle<CR>
@@ -46,7 +49,8 @@ nmap <Leader>3 :set list!<CR>
 nmap <Leader>0 :Ack!<CR>
 nmap <Leader>9 :cclose<CR>
 nmap <Leader>- :Ack! 
- 
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
 let NERDTreeNodeDelimiter = "\t"
 let NERDTreeIgnore = ['\.pyc$', '\~$']
 autocmd StdinReadPre * let s:std_in=1
@@ -56,6 +60,12 @@ autocmd FileType qf wincmd J
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+:hi NonText ctermfg=DarkGrey
+:highlight LineNr ctermfg=Green
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+:hi SpecialKey ctermfg=darkGrey
 
 inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : coc#refresh()
