@@ -10,7 +10,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'davidhalter/jedi-vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'neoclide/coc.nvim'
@@ -18,9 +17,11 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'zivyangll/git-blame.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'ericbn/vim-solarized'
 
-let g:coc_global_extensions = ['coc-phpls', 'coc-pyright', 'coc-python', 'coc-highlight', 'coc-tsserver']
-nmap <silent> <F9> <Plug>(coc-definition)
+let g:coc_global_extensions = ['coc-pyright', 'coc-highlight']
+" nmap <silent> <F9> <Plug>(coc-definition)
 
 set tags=tags
 
@@ -61,11 +62,16 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-:hi NonText ctermfg=DarkGrey
-:highlight LineNr ctermfg=Green
+syntax enable
+set background=dark
+colorscheme solarized
+set termguicolors
+
+" :hi NonText ctermfg=DarkGrey
+" :highlight LineNr ctermfg=Green
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
-:hi SpecialKey ctermfg=darkGrey
+" :hi SpecialKey ctermfg=darkGrey
 
 inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : coc#refresh()
