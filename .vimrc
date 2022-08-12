@@ -47,6 +47,7 @@ nmap <Leader>8 :TagbarToggle<CR>
 
 nmap <leader>r :%s/\(<c-r>=expand("<cword>")<cr>\)/
 nmap <Leader>2 :set rnu! nu!<CR>
+nmap <Leader>b :Buffer<CR>
 nmap <Leader>3 :set list!<CR>
 nmap <Leader>0 :Ack!<CR>
 nmap <Leader>9 :cclose<CR>
