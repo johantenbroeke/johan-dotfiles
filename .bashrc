@@ -117,7 +117,13 @@ if ! shopt -oq posix; then
 fi
 
 alias tmux="TERM=screen-256color-bce tmux"
+alias vi="nvim"
 set -o vi
 
 export PATH="$PATH:~/.local/bin/"
 eval $(thefuck --alias)
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
