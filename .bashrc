@@ -116,7 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
+export TERM=tmux-256color
 alias vi="nvim"
 set -o vi
 
@@ -127,3 +128,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export OPENAI_KEY=XXX
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/johan/google-cloud-sdk/path.bash.inc' ]; then . '/home/johan/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/johan/google-cloud-sdk/completion.bash.inc' ]; then . '/home/johan/google-cloud-sdk/completion.bash.inc'; fi
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Restart your shell for the changes to take effect.
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
